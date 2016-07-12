@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html ng-app="mainModule">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>AngularJS Task Manager</title>
+    <script data-require="angular.js@*" data-semver="1.2.13" src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
+    
+    <style>
+        #menu {
+          position: fixed;
+          right: 0;
+          top: 50%;
+          width: 8em;
+          margin-top: -2.5em;
+        }
+    </style>
+
+    
+    
+</head>
+
+<body >
+    <div ng-controller="mainController">
+<!--
+        <ul id=menu>
+<li><a href="#L384">Section 1</a>
+<li><a href="#details">Section 2</a>
+<li><a href="#FAQ">Section 3</a>
+</ul>
+-->
+        
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo right">Logo</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </nav>
+        
+        
+           <!-- Page Layout here -->
+    <div class="row">
+
+      <div class="col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
+          
+          
+      </div>
+      <div class="col s12 m8 l9" > <!-- Note that "m8 l9" was added -->  
+          <div class="container">
+      
+                    <ul class="collapsible popout" data-collapsible="accordion" watch>
+                        <li ng-repeat="apontamentos in listaApt">
+                            <div class="collapsible-header" ng-click="setClickedRow(apontamentos)">
+                                    <label>
+                                        <span>CC:</span>
+                                    </label>
+                                    {{apontamentos.cc}} 
+                                    <label style=" margin-left: 4cm;">
+                                        <span>Horas Apontadas:</span>
+                                    </label>    
+                                         {{apontamentos.totalapont}}
+
+                                    <label style=" margin-left: 4cm;">
+                                        <span>Horas Previstas:</span>
+                                    </label>                  
+                                         {{apontamentos.totalprev}}                                         
+                            </div>
+
+
+                            <div class="collapsible-body">
+
+                                    <table style="width: 33%;">
+                                    <thead>
+                                      <tr>
+                                          <th data-field="id">Nome da Maquina</th>
+                                          <th data-field="name">Horas Apontadas</th>                          
+                                      </tr>
+                                    </thead>
+
+
+
+                                    <tbody ng-repeat="maquinas in listamaquinas.Maquinas">
+                                      <tr ng-click="setClickedRowMaquinas(maquinas)">                      
+                                        <td  style="padding: 6px 5px;">{{maquinas.nomeMaquina}}</td>
+                                        <td  style="padding: 6px 5px;text-align: right;">{{maquinas.totalapont}}</td>
+                                      </tr>
+
+                                    </tbody>
+                                  </table>
+
+
+                                 <table style="width: 33%;" ng-show="showOperador">
+                                    <thead>
+                                      <tr>
+                                          <th data-field="Operador">Operador</th>
+                                          <th data-field="Apontadas">Horas Apontadas</th>                          
+                                      </tr>
+                                    </thead>                     
+
+                                    <tbody ng-repeat="operador in listaoperador.Operador">
+
+                                        <td  style="padding: 6px 5px;width: 233px">{{operador.nome}}</td>
+                                        <td  style="padding: 6px 5px;text-align: right;">{{operador.totalapont}}</td>
+
+
+                                    </tbody>
+                                  </table>
+
+                            </div>
+                        </li>
+                    </ul>
+        
+        
+          </div>
+        
+      </div>
+
+    </div>
+                  
+        
+    </div>
+    
+          <!--Import jQuery before materialize.js-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+</body>
+
+</html>

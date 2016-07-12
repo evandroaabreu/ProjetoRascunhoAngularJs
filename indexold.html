@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html ng-app="mainModule">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>AngularJS Task Manager</title>
+    <script data-require="angular.js@*" data-semver="1.2.13" src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    
+    <style>
+        .selected {
+            color:white;
+            font-weight:bold;
+        }
+        
+        .success{
+            color:green;
+            font-weight:bold;
+        }
+        
+        .notsuccess {
+            color:gray;
+            font-weight:bold;
+        }
+        
+        .error {
+            color:red;
+            font-weight:bold;
+        }  
+        
+       .imgsuccess{
+           background-image: url("/images/imgsucess.png");
+        }        
+       .imgnotsuccess{
+           background-image: url("/images/imgnotsucess.png");
+        }        
+       .imgerror{
+           background-image: url("/images/imgerror.png");
+        }        
+                
+        
+    </style>
+    
+</head>
+
+<body >
+    <div ng-controller="mainController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pessoa in lista" >
+                    <td>{{pessoa.nome}}</th>
+                        <td>{{pessoa.idade}}</th>
+                            <td>
+                                <button class="btn" ng-click="remover(pessoa)">Remover</button>
+                                <button class="btn" ng-click="alterar(pessoa)">alterar</button>
+                                </th>
+                </tr>
+            </tbody>
+        </table>
+        <form ng-submit="salvar()">
+            <input type=text ng-model="pessoa.nome">
+            <input type=text ng-model="pessoa.idade">
+            <button>salvar</button>
+        </form>
+
+<!--
+        <table class="table table-bordered" >
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <tr ng-repeat="item in foodItems" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)">
+                <td></td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity}}</td>
+            </tr>
+        </table>
+-->
+
+        <table class="table" >
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Cores</th>
+                <th>IMG</th>
+            </tr>
+
+            <tr ng-repeat="item in foodItems" ng-class="{'selected':$index == selectedRow,'success':item.cores == 1, 'notsuccess':item.cores == 2, 'error':item.cores == 3}" ng-click="setClickedRow(item,$index)">
+                <td></td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.cores}}</td>
+            </tr>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+
+        <table class="table" > 
+        <tr> 
+        <td>date</td> 
+        <td>timeE1</td> 
+        <td>timeS1</td> 
+        <td>timeE2</td> 
+       <td>timeS2</td> 
+        </tr> 
+            <tr ng-repeat="item in listOcurrence"> 
+                <td> 
+                <div ng-hide="item.date == ''">{{item.date}}</div> 
+<!--                <input type="text" ng-model="item.price" ng-show="$index==editar"> -->
+                </td> 
+                <td> 
+                <div ng-show="item.timeE1.length === 5">{{item.timeE1}}</div> 
+                     <input type="text" ng-model="item.timeE1" ng-show="item.timeE1.length <= 4">                 
+                    
+                </td> 
+                <td> 
+                <div ng-show="item.timeS1.length === 5">{{item.timeS1}}</div> 
+                    <input type="text" ng-model="item.timeS1" ng-show="item.timeS1.length <= 4">                 
+                </td> 
+                <td> 
+                <div ng-show="item.timeE2.length === 5">{{item.timeE2}}</div> 
+                    <input type="text" ng-model="item.timeE2" ng-show="item.timeE2.length <= 4">                 
+                </td> 
+                <td> 
+                <div ng-show="item.timeS2.length === 5">{{item.timeS2}}</div> 
+                    <input type="text" ng-model="item.timeS2" ng-show="item.timeS2.length <= 4">                 
+                </td>                
+                
+                <td> 
+                <button class="btn" ng-click="setHours(item)" >Editar</button> 
+                </td>
+            </tr> 
+        </table>
+
+                    <select ng-model="user.lookupId" ng-options="select as speciality.lookupName for speciality in specialityList" ng- change="selectedSpecilaty()">
+                    <option value="">-- choose speciality --</option>
+                    </select>
+
+
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<html lang="en" ng-app="listDemo1">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.css">
+
+<!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+
+
+</head>
+
+<body layout="column">
+  <div id="page1" ng-controller="AppCtrl" ng-cloak>
+
+		  <md-toolbar class="md-warn">
+			<div class="md-toolbar-tools"style="margin:0 auto; width: 300px">
+			  <h2 class="md-flex">TTM</h2>
+			</div>
+		  </md-toolbar>
+
+		  <div style="margin:0 auto; width: 300px">
+			 <md-content>
+				<md-list class="collection">
+				  <md-list-item class="collection-item md-3-line md-offset" ng-repeat="item in ocurrences" ng-click="setClickedRow(item,$index)">
+  					<div class="md-list-item-text" layout="column">
+  					  <h3>{{ formatDate(item.date) }}</h3>
+  					  <h4>{{ item.timeE1 }} - {{ item.timeS1 }} - {{item.timeE2}} - {{ item.timeS2 }}</h4>
+  					</div>
+            <i class="material-icons">play_circle_outline</i>
+
+				  </md-list-item>
+
+				</md-list>
+			  </md-content>
+		  </div>
+		<!--  <md-button class="md-raised">Adicionar</md-button>//-->
+		 <!--    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>  //-->
+
+  </div>
+
+
+
+
+<!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Angular Material Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  <script src="http://momentjs.com/downloads/moment.min.js"></script>
+
+  <script>
+angular.module('listDemo1', ['ngMaterial'])
+/*.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
+})*/
+.controller('AppCtrl', function($scope) {
+    moment.locale("pt-BR");
+    var imagePath = 'img/list/60.jpeg';
+    $scope.formatDate = function(strDate) {
+      return moment(strDate, "DD/MM/YYYY").format('DD/MM/YYYY - ddd');
+    };
+		$scope.ocurrences = [{
+			date:'06/10/2015',
+			timeE1:'08:00',
+			timeS1:'12:00',
+			timeE2:'13:00',
+			timeS2:'17:50',
+			cores:'1',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'07/10/2015',
+			timeE1:'09:00',
+			timeS1:'18:00',
+			timeE2:'',
+			timeS2:'',
+			cores:'2',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'08/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'09/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'10/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'11/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'12/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'13/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'14/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		},
+		{
+			date:'15/10/2015',
+			timeE1:'08:15',
+			timeS1:'18:15',
+			timeE2:'',
+			timeS2:'',
+			cores:'3',
+			statusClass:'denied',
+			textEmployeeComment: 'testeee'
+		}];
+
+		$scope.setClickedRow = function(item,index){  //function that sets the value of selectedRow to current index
+
+			window.console.log(item,index);
+
+		}
+
+
+});
+  </script>
+</body>
+
+</html>
